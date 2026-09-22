@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Multimedia Compression Tool</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗜️</text></svg>">
+
+<!-- Fonts: a characterful serif for display, Inter for body copy, IBM Plex Mono for numeric/data readouts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="30" height="30">
+          <rect x="6" y="6" width="36" height="36" rx="9" fill="none" stroke="currentColor" stroke-width="3"/>
+          <path d="M17 24 L24 17 L31 24 L24 31 Z" fill="currentColor"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-title">Multimedia Compression Tool</span>
+        <span class="brand-subtitle">Compress and manage your multimedia files easily</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav">
+      <a href="#text-section">Text</a>
+      <a href="#image-section">Image</a>
+      <a href="#audio-section">Audio</a>
+      <a href="#video-section">Video</a>
+      <a href="#settings-section">Settings</a>
+      <a href="#about-section">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO / INTRO STRIP ============ -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">College mini-project · GUI-based application</p>
+      <h1>Shrink your media, keep the moment.</h1>
+      <p class="hero-text">
+        Upload an image, audio clip or video, then tune the quality, format and compression
+        type on the right. Press <strong>Compress File</strong> to watch a simulated
+        compression pass reduce the file size in real time.
+      </p>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="squeeze-demo" id="heroSqueeze">
+        <div class="squeeze-bars">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="squeeze-arrows">
+          <svg width="26" height="26" viewBox="0 0 24 24"><path d="M12 2 L18 10 L6 10 Z" fill="currentColor"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24"><path d="M12 22 L18 14 L6 14 Z" fill="currentColor"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5 MULTIMEDIA COMPONENTS STRIP ============ -->
+  <section class="components-strip" aria-label="Multimedia components used in this tool">
+    <a href="#text-section" class="component-badge">
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4 4h16v3h-2V6h-5v13h2.5v2h-7v-2H11V6H6v1H4Z"/></svg>
+      <span>Text</span>
+    </a>
+    <a href="#image-section" class="component-badge">
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2v10h14V7H5Zm2 8 3.5-4.5 2.5 3L16.5 10 19 15H7Z"/></svg>
+      <span>Image</span>
+    </a>
+    <a href="#audio-section" class="component-badge">
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M9 4v10.3A3.5 3.5 0 1 0 11 17V7h6V4H9Z"/></svg>
+      <span>Audio</span>
+    </a>
+    <a href="#video-section" class="component-badge">
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4 5h11a1 1 0 0 1 1 1v3.5l4.4-2.9A.6.6 0 0 1 21 7v10a.6.6 0 0 1-1.6.4L15 14.5V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg>
+      <span>Video</span>
+    </a>
+    <a href="#settings-section" class="component-badge">
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2 2 7l10 5 10-5Zm0 7-8-4v6c0 3.3 3.6 6 8 6s8-2.7 8-9v-3Z"/></svg>
+      <span>Animation</span>
+    </a>
+  </section>
+
+  <!-- ============ WORKBENCH: MEDIA PANELS + SETTINGS ============ -->
+  <div class="workbench">
+
+    <!-- ---------- LEFT COLUMN: MEDIA PANELS ---------- -->
+    <div class="panels-column">
+
+      <!-- TEXT SECTION -->
+      <section class="panel" id="text-section" data-media="text">
+        <div class="panel-head">
+          <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M4 4h16v3h-2V6h-5v13h2.5v2h-7v-2H11V6H6v1H4Z"/></svg> Text</h2>
+          <span class="panel-tag" data-role="active-tag">active</span>
+        </div>
+
+        <div class="upload-row">
+          <label class="btn btn-primary file-btn">
+            <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 3 6 9h4v7h4V9h4l-6-6ZM4 20h16v2H4z"/></svg>
+            Upload Text File
+            <input type="file" id="textInput" accept=".txt,text/plain" hidden />
+          </label>
+          <span class="file-name" id="textFileName">No file selected — showing sample text</span>
+        </div>
+
+        <div class="media-preview text-preview">
+          <textarea id="textArea" spellcheck="false" aria-label="Text content to compress"></textarea>
+        </div>
+        <p class="field-hint">Type, paste, or upload a .txt file — the counts below update as you type.</p>
+
+        <div class="stat-row">
+          <div class="stat">
+            <span class="stat-label">Original size</span>
+            <span class="stat-value mono" id="textOriginalSize">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Compressed size</span>
+            <span class="stat-value mono" id="textCompressedSize">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Reduction</span>
+            <span class="stat-value mono accent" id="textCompressionPct">—</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- IMAGE SECTION -->
+      <section class="panel" id="image-section" data-media="image">
+        <div class="panel-head">
+          <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2v10h14V7H5Zm2 8 3.5-4.5 2.5 3L16.5 10 19 15H7Z"/></svg> Image</h2>
+          <span class="panel-tag" data-role="active-tag">active</span>
+        </div>
+
+        <div class="upload-row">
+          <label class="btn btn-primary file-btn">
+            <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 3 6 9h4v7h4V9h4l-6-6ZM4 20h16v2H4z"/></svg>
+            Upload Image
+            <input type="file" id="imageInput" accept="image/*" hidden />
+          </label>
+          <span class="file-name" id="imageFileName">No image selected — showing sample image</span>
+        </div>
+
+        <div class="media-preview image-preview">
+          <img id="imagePreview" alt="Selected preview" />
+        </div>
+
+        <div class="stat-row">
+          <div class="stat">
+            <span class="stat-label">Original size</span>
+            <span class="stat-value mono" id="imageOriginalSize">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Compressed size</span>
+            <span class="stat-value mono" id="imageCompressedSize">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Reduction</span>
+            <span class="stat-value mono accent" id="imageCompressionPct">—</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- AUDIO SECTION -->
+      <section class="panel" id="audio-section" data-media="audio">
+        <div class="panel-head">
+          <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M9 4v10.3A3.5 3.5 0 1 0 11 17V7h6V4H9Z"/></svg> Audio</h2>
+          <span class="panel-tag" data-role="active-tag">active</span>
+        </div>
+
+        <div class="upload-row">
+          <label class="btn btn-primary file-btn">
+            <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 3 6 9h4v7h4V9h4l-6-6ZM4 20h16v2H4z"/></svg>
+            Choose Audio File
+            <input type="file" id="audioInput" accept="audio/*" hidden />
+          </label>
+          <span class="file-name" id="audioFileName">No file selected — using generated sample tone</span>
+        </div>
+
+        <div class="media-preview audio-preview">
+          <div class="waveform" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <audio id="audioPlayer" controls preload="metadata"></audio>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat">
+            <span class="stat-label">Original size</span>
+            <span class="stat-value mono" id="audioOriginalSize">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Compressed size</span>
+            <span class="stat-value mono" id="audioCompressedSize">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Reduction</span>
+            <span class="stat-value mono accent" id="audioCompressionPct">—</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO SECTION -->
+      <section class="panel" id="video-section" data-media="video">
+        <div class="panel-head">
+          <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M4 5h11a1 1 0 0 1 1 1v3.5l4.4-2.9A.6.6 0 0 1 21 7v10a.6.6 0 0 1-1.6.4L15 14.5V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg> Video</h2>
+          <span class="panel-tag" data-role="active-tag">active</span>
+        </div>
+
+        <div class="upload-row">
+          <label class="btn btn-primary file-btn">
+            <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 3 6 9h4v7h4V9h4l-6-6ZM4 20h16v2H4z"/></svg>
+            Choose Video File
+            <input type="file" id="videoInput" accept="video/*" hidden />
+          </label>
+          <span class="file-name" id="videoFileName">No file selected — generating sample clip…</span>
+        </div>
+
+        <div class="media-preview video-preview">
+          <video id="videoPlayer" controls preload="metadata"></video>
+          <div class="video-placeholder" id="videoPlaceholder">
+            <svg viewBox="0 0 24 24" width="34" height="34"><path fill="currentColor" d="M8 5v14l11-7Z"/></svg>
+            <span>Preparing sample video…</span>
+          </div>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat">
+            <span class="stat-label">Original size</span>
+            <span class="stat-value mono" id="videoOriginalSize">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Compressed size</span>
+            <span class="stat-value mono" id="videoCompressedSize">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Reduction</span>
+            <span class="stat-value mono accent" id="videoCompressionPct">—</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ---------- RIGHT COLUMN: COMPRESSION SETTINGS ---------- -->
+    <aside class="settings-column" id="settings-section">
+      <div class="panel settings-panel">
+        <div class="panel-head">
+          <h2><svg class="icon" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="m19.4 13-.9-.6a7.9 7.9 0 0 0 0-.8l.9-.6a1 1 0 0 0 .3-1.3l-1-1.7a1 1 0 0 0-1.2-.4l-1 .4a7.7 7.7 0 0 0-1.4-.8l-.2-1.1a1 1 0 0 0-1-.8h-2a1 1 0 0 0-1 .8l-.2 1.1a7.7 7.7 0 0 0-1.4.8l-1-.4a1 1 0 0 0-1.2.4l-1 1.7a1 1 0 0 0 .3 1.3l.9.6a7.9 7.9 0 0 0 0 .8l-.9.6a1 1 0 0 0-.3 1.3l1 1.7a1 1 0 0 0 1.2.4l1-.4c.4.3.9.6 1.4.8l.2 1.1a1 1 0 0 0 1 .8h2a1 1 0 0 0 1-.8l.2-1.1c.5-.2 1-.5 1.4-.8l1 .4a1 1 0 0 0 1.2-.4l1-1.7a1 1 0 0 0-.3-1.3ZM12 14.5A2.5 2.5 0 1 1 12 9.5a2.5 2.5 0 0 1 0 5Z"/></svg> Compression settings</h2>
+        </div>
+
+        <div class="target-picker">
+          <span class="stat-label">Compressing</span>
+          <div class="segmented" id="targetPicker">
+            <button type="button" data-target="text" class="seg-btn is-active">Text</button>
+            <button type="button" data-target="image" class="seg-btn">Image</button>
+            <button type="button" data-target="audio" class="seg-btn">Audio</button>
+            <button type="button" data-target="video" class="seg-btn">Video</button>
+          </div>
+          <span class="active-filename mono" id="activeFileName">sample-text.txt</span>
+        </div>
+
+        <div class="field">
+          <div class="field-label-row">
+            <label for="qualitySlider">Quality</label>
+            <span class="mono accent" id="qualityValue">75%</span>
+          </div>
+          <input type="range" id="qualitySlider" min="10" max="100" value="75" step="1" />
+          <div class="range-scale"><span>10% · smaller file</span><span>100% · best quality</span></div>
+        </div>
+
+        <div class="field-pair">
+          <div class="field">
+            <label for="formatSelect">Output format</label>
+            <select id="formatSelect"></select>
+          </div>
+          <div class="field">
+            <label for="typeSelect">Compression type</label>
+            <select id="typeSelect">
+              <option value="lossy">Lossy</option>
+              <option value="lossless">Lossless</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="result-grid">
+          <div class="result-cell">
+            <span class="stat-label">Original size</span>
+            <span class="mono result-value" id="settingsOriginal">—</span>
+          </div>
+          <div class="result-cell">
+            <span class="stat-label">Compressed size</span>
+            <span class="mono result-value" id="settingsCompressed">—</span>
+          </div>
+          <div class="result-cell">
+            <span class="stat-label">Compression ratio</span>
+            <span class="mono result-value accent" id="settingsRatio">—</span>
+          </div>
+        </div>
+
+        <div class="compress-viz" id="compressViz" aria-hidden="true">
+          <div class="viz-bars">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-label-row">
+            <span id="progressStatus">Ready to compress</span>
+            <span class="mono" id="progressPercent">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn btn-primary btn-block" id="compressBtn">
+            <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2a1 1 0 0 1 1 1v3.6l1.3-1.3a1 1 0 1 1 1.4 1.4l-3 3a1 1 0 0 1-1.4 0l-3-3a1 1 0 1 1 1.4-1.4L11 6.6V3a1 1 0 0 1 1-1Zm-7 9h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1Zm2 3v4h10v-4H7Z"/></svg>
+            Compress File
+          </button>
+          <button class="btn btn-secondary" id="downloadBtn" disabled>
+            <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v9.6l2.3-2.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L11 13.6V4a1 1 0 0 1 1-1ZM5 19h14v2H5Z"/></svg>
+            Download
+          </button>
+          <button class="btn btn-ghost" id="resetBtn">
+            <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7Z"/></svg>
+            Reset
+          </button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ============ ABOUT SECTION ============ -->
+  <section class="about" id="about-section">
+    <div class="about-card">
+      <h2>About Multimedia Compression</h2>
+      <p>
+        Multimedia compression reduces the size of image, audio and video files while
+        maintaining acceptable quality. It helps save storage space and reduces file
+        transfer time.
+      </p>
+      <div class="about-grid">
+        <div class="about-item">
+          <span class="about-label">Text</span>
+          <p>Replaces repeated characters and patterns with shorter codes — the basis of lossless formats like ZIP and GZIP.</p>
+        </div>
+        <div class="about-item">
+          <span class="about-label">Image</span>
+          <p>Reduces pixel redundancy and colour depth — formats like JPEG and WebP trade a little detail for a much smaller file.</p>
+        </div>
+        <div class="about-item">
+          <span class="about-label">Audio</span>
+          <p>Removes frequencies the human ear barely notices, so a compressed track still sounds close to the original.</p>
+        </div>
+        <div class="about-item">
+          <span class="about-label">Video</span>
+          <p>Combines image compression with motion prediction between frames to shrink large clips dramatically.</p>
+        </div>
+        <div class="about-item">
+          <span class="about-label">Animation</span>
+          <p>A sequence of frames played quickly — used here to visualise the compression pass itself as it runs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-title">Multimedia Compression Tool | GUI-Based Web Application</p>
+    <p class="footer-meta">College mini-project · Built with HTML5, CSS3 &amp; JavaScript · No backend or database used</p>
+    <p class="footer-meta">Submitted as part of the Multimedia &amp; Web Technologies coursework</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
